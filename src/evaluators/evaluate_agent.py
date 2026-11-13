@@ -142,7 +142,7 @@ def create_evaluation_definition():
 
     print(f"\nConfiguration:")
     print(f"  Judge Model: {model_deployment_name}")
-    print(f"  Evaluators: Intent Resolution, Relevance, Groundedness")
+    print(f"  Evaluators: Intent Resolution, Relevance, Similarity")
 
     # Tell Foundry the shape of each record in the dataset
     data_source_config = DataSourceConfigCustom(
@@ -183,8 +183,8 @@ def create_evaluation_definition():
         },
         {
             "type": "azure_ai_evaluator",
-            "name": "groundedness",
-            "evaluator_name": "builtin.groundedness",
+            "name": "similarity",
+            "evaluator_name": "builtin.similarity",
             "initialization_parameters": {"deployment_name": model_deployment_name},
             "data_mapping": {
                 "query":    "{{item.query}}",
